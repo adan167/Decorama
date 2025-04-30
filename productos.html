@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Decorama | Productos</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="img/logo.png" alt="Logo Decorama" width="40"> Decorama
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link active" href="productos.html">Productos</a></li>
+          <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="carrito.html">Carrito</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Productos -->
+  <div class="container py-5">
+    <h2 class="mb-4 text-center">Catálogo de Productos</h2>
+    <div class="row g-4">
+
+      <!-- Producto 1 -->
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="imagenes/cortina beige.jpg" height="450" class="card-img-top" alt="Cortina Beige">
+          <div class="card-body">
+            <h5 class="card-title">Cortina Beige</h5>
+            <p class="card-text">Elegante cortina de tela suave y resistente.</p>
+            <p class="card-text"><strong>Precio:</strong> S/ 120.00</p>
+            <button class="btn btn-primary" onclick="agregarAlCarrito('Cortina Beige', 120)">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producto 2 -->
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="imagenes/alfombra moderna.webp" height="450"  class="card-img-top" alt="Alfombra Moderna">
+          <div class="card-body">
+            <h5 class="card-title">Alfombra Moderna</h5>
+            <p class="card-text">Diseño moderno con textura suave y antideslizante.</p>
+            <p class="card-text"><strong>Precio:</strong> S/ 180.00</p>
+            <button class="btn btn-primary" onclick="agregarAlCarrito('Alfombra Moderna', 180)">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producto 3 -->
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="imagenes/roller-screen.jpg" height="450" class="card-img-top" alt="Roller Sun Screen">
+          <div class="card-body">
+            <h5 class="card-title">Roller Sun Screen</h5>
+            <p class="card-text">Protección solar con diseño minimalista.</p>
+            <p class="card-text"><strong>Precio:</strong> S/ 150.00</p>
+            <button class="btn btn-primary" onclick="agregarAlCarrito('Roller Sun Screen', 150)">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    © 2025 Decorama. Todos los derechos reservados.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function agregarAlCarrito(nombre, precio) {
+      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      const index = carrito.findIndex(p => p.nombre === nombre);
+
+      if (index > -1) {
+        carrito[index].cantidad++;
+      } else {
+        carrito.push({ nombre, precio, cantidad: 1 });
+      }
+
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      alert(`${nombre} fue agregado al carrito.`);
+    }
+  </script>
+</body>
+</html>
+
